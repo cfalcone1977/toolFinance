@@ -1,0 +1,41 @@
+#menuPrincipal{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    align-content: center;
+    background-color: rgb(250, 247, 37);
+    height: 70px;
+    width: 100%;
+    /*opacity: 0.8;*/
+    border-bottom: 1px solid black; 
+}
+nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    padding: 7px 13px;
+    border-radius: 7px;
+    text-transform: uppercase;
+}
+li a:hover{
+   background:rgb(243, 50, 227);
+   transition: 0.5s;
+}
+.navbar {
+  /* 1. Define el grosor de la línea (ej: 2 píxeles) */
+  /* 2. Define el estilo de la línea (ej: sólida) */
+  /* 3. Define el color de la línea (negro) */
+  border-bottom: 2px solid black; 
+}
+/*
+#donar{
+  cursor: pointer;
+}*/
