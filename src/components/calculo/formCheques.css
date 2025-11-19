@@ -1,13 +1,15 @@
-#encabezado{
+#encabezadoCheques{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
     display: flex;
     flex-direction: row;
-    gap: 65px;
+    gap: 50px;
     justify-content: center;
-    height: 20px;
-    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
+
 #contenedorCHEQUES{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: rgb(244, 242, 105);    
@@ -78,13 +80,14 @@ transition: 0.2s;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 20px;
+    gap: 50px;
     height: 40px;
     margin-left: 40px;
 }
 
 .boton{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
     width: 70px;
     height: 25px;
     border-radius: 7px;

@@ -1,0 +1,48 @@
+#contenedorFormularioTasas{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-items: center;
+  background-color: rgb(244, 242, 105);
+  margin: 9px;
+  padding: 5px;
+  border-radius: 7px;
+  box-shadow: 2px 2px 7px 1px black;
+
+}
+#encabezadoTasas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    height: 20px;
+
+}
+#contenedorTasas{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#erroresTasa{
+    display: flex;
+    justify-content: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 11px;
+    color: red;
+    min-height: 15px;
+    background-color: rgb(244, 242, 105);
+    opacity: 0.8;
+}
+.inputTasa{
+    width: 40px;
+    height: 18px;
+    border-radius: 5px;
+    margin-left: 3px;
+    margin-right: 5px;
+}
