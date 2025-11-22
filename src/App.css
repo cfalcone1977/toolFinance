@@ -2,6 +2,15 @@
   background-color: rgb(244, 242, 105);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  
+  align-items: center; 
+}
+
+#contenedorChequesCalculo{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 9px;
+  padding: 10px 15px;
+  border-radius: 7px;
+  box-shadow: 2px 2px 7px 1px black;
 }

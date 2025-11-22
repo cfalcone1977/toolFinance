@@ -2,11 +2,15 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { TasasContext } from '../../context/TasasContext';
+import { SideContext } from '../../context/SideContext';
+
+import {calcular_dias, calculo_tasa, realizarCalculos} from "../utils/calculos"
 import "./formCheques.css"
 
 
 function FormCheques() {
   const { tasas, setTasas } = useContext(TasasContext);
+  const { calculos, setCalculos } = useContext(SideContext);
   const cheque={importe:"", fecha:""};
   const [cheques,setCheques]= useState(Array(10).fill(cheque));
   const [errores,setErrores]= useState(Array(10).fill(""));
@@ -23,27 +27,25 @@ function FormCheques() {
     console.log(cheques);
     console.log(errores);
     console.log(tasas);
-    /*
-    const nuevosErrores=[...errores];
+    const nuevosCalculos=[...calculos];
     for (let i = 0; i < cheques.length; i=i+1) {
-      if ((cheques[i].importe==="") && (cheques[i].fecha!="")){
-                 nuevosErrores[i]="Falta Importe";
-                 setErrores(nuevosErrores);
-       
-                        }
-      if ((cheques[i].importe!="") && (cheques[i].fecha==="") && (salioInput)) {
-                     nuevosErrores[i]="Falta Fecha";
-                     setErrores(nuevosErrores);
-          
-                        }
-      if ((cheques[i].importe!="") && (cheques[i].fecha!="")){
-                 nuevosErrores[i]="";
-                 setErrores(nuevosErrores);
-                        }                        
-      console.log("lista Errores:",nuevosErrores);
+      if (cheques[i].importe!=""){
+        const dias=Number(calcular_dias(cheques[i].fecha));
+        const tasaAaplicar=Number(calculo_tasa(dias,tasas));
+        const descuentoCalculado=((Number(cheques[i].importe)/100)*tasaAaplicar);
+        const liquidarCalculado=(Number(cheques[i].importe)-((Number(cheques[i].importe)/100)*tasaAaplicar));
+        nuevosCalculos[i]={...nuevosCalculos[i],diasCobro: dias, 
+                          porcentaje: tasaAaplicar,
+                descuento: descuentoCalculado,
+                liquidar: liquidarCalculado,
+            };
+        console.log(dias);
+        console.log(tasaAaplicar.toFixed(2)+"%");
+        console.log("resultado:",(Number(cheques[i].importe)-((Number(cheques[i].importe)/100)*tasaAaplicar)));
+      } 
     }
-  */
-
+    console.log("resulcatado Calculos: ",nuevosCalculos);
+    setCalculos(nuevosCalculos);
   }
  const controladorCheque=(e,index)=>{
    const {name,value}=e.target;
@@ -128,12 +130,21 @@ function FormCheques() {
   const borrarCheque=(e,index)=>{
     const bkCheques=[...cheques];
     const nuevosErrores=[...errores];
+    const nuevosCalculos=[...calculos];
     if ((bkCheques[index].importe!="") || (bkCheques[index].fecha!="")){
       bkCheques[index].importe="";
       bkCheques[index].fecha="";
+
       nuevosErrores[index]="";
+
+      nuevosCalculos[index].diasCobro="";
+      nuevosCalculos[index].porcentaje="";
+      nuevosCalculos[index].descuento="";            
+      nuevosCalculos[index].liquidar="";      
+
       setErrores(nuevosErrores);
       setCheques(bkCheques);
+      setCalculos(nuevosCalculos);
     }
   }
   const resetCheques=()=>{
@@ -141,13 +152,22 @@ function FormCheques() {
    console.log("Borrar datos variables de estado formulario");
    const bkCheques=[...cheques];
    const nuevosErrores=[...errores];
+   const nuevosCalculos=[...calculos];
    for (let i = 0; i < bkCheques.length; i=i+1) {
      bkCheques[i].importe="";
      bkCheques[i].fecha="";
+
      nuevosErrores[i]="";
+
+     nuevosCalculos[i].diasCobro="";
+     nuevosCalculos[i].porcentaje="";
+     nuevosCalculos[i].descuento="";            
+     nuevosCalculos[i].liquidar="";    
+
    }
    setCheques(bkCheques);
    setErrores(nuevosErrores);
+   setCalculos(nuevosCalculos);   
   }
 
   return (

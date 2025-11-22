@@ -11,10 +11,16 @@
     /*opacity: 0.8;*/
     border-bottom: 1px solid black; 
 }
+#listadoMenu{
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
 nav ul{
     list-style: none;
     display: flex;
-    justify-content: space-evenly;
 }
 
 nav ul li a{

@@ -50,7 +50,7 @@
 .etiquetaImporte{
    display: flex;
    align-items: center;
-
+   width: 76px;
 }
 
 input[type="text"]:focus, input[type="date"]:focus{

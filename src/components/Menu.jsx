@@ -4,7 +4,7 @@ function Menu() {
   return (
     <>
       <nav id='menuPrincipal'>
-            <ul>
+            <ul id='listadoMenu'>
                 <li><a href="">Calculo</a></li>
                 <li><a href="">Consulta</a></li>
                 <li><a href="">DENUNCIADOS</a></li>
