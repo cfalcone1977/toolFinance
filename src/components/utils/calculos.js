@@ -49,7 +49,31 @@
 return 0;    
 }
 
-export function realizarCalculos(cheques,tasas){
-
+export function realizarCalculosTotales(cheques,chequesCalculados){
+  let totales={importeTotal:0,tasaPromedio:0,profit:0,totalApagar:0};
+  let contador=0;
+  for (let i = 0; i < cheques.length; i=i+1) {
+    if (cheques[i].importe!=""){
+           totales.importeTotal=totales.importeTotal+Number(cheques[i].importe);
+            }
+    
+  }
+  for (let i = 0; i < chequesCalculados.length; i=i+1) {
+    if (chequesCalculados[i].porcentaje!=""){
+                 totales.tasaPromedio=totales.tasaPromedio+Number(chequesCalculados[i].porcentaje);
+                 contador=contador+1;
+                } //else {
+                   //     totales.tasaPromedio=totales.tasaPromedio+0; ///ver esta modificacion1!!!
+                     //  }
+  }
+  totales.tasaPromedio=totales.tasaPromedio/contador;
+  for (let i = 0; i < chequesCalculados.length; i=i+1) {
+    if (chequesCalculados[i].descuento!=""){
+                 totales.profit=totales.profit+Number(chequesCalculados[i].descuento);
+                }
+  } 
+  totales.totalApagar=totales.importeTotal-totales.profit;
+  console.log(totales);
+  return totales;
 
 }

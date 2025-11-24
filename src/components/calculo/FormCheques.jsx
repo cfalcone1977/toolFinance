@@ -3,16 +3,21 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { TasasContext } from '../../context/TasasContext';
 import { SideContext } from '../../context/SideContext';
+import { ChequesContext } from '../../context/ChequesContext';
+import { TotalesContext } from '../../context/TotalesContext';
 
-import {calcular_dias, calculo_tasa, realizarCalculos} from "../utils/calculos"
+import {calcular_dias, calculo_tasa, realizarCalculosTotales} from "../utils/calculos"
 import "./formCheques.css"
 
 
 function FormCheques() {
   const { tasas, setTasas } = useContext(TasasContext);
   const { calculos, setCalculos } = useContext(SideContext);
-  const cheque={importe:"", fecha:""};
-  const [cheques,setCheques]= useState(Array(10).fill(cheque));
+  const { cheques, setCheques } = useContext(ChequesContext);
+  const { totales, setTotales} =useContext(TotalesContext);
+
+  /*const cheque={importe:"", fecha:""};
+  const [cheques,setCheques]= useState(Array(10).fill(cheque));*/
   const [errores,setErrores]= useState(Array(10).fill(""));
   const [DeshabilitarCalcular, setDeshabilitarCalcular]=useState(true);
   let tasasCompletas=false;
@@ -44,8 +49,18 @@ function FormCheques() {
         console.log("resultado:",(Number(cheques[i].importe)-((Number(cheques[i].importe)/100)*tasaAaplicar)));
       } 
     }
-    console.log("resulcatado Calculos: ",nuevosCalculos);
+    console.log("resultado Calculos: ",nuevosCalculos);
     setCalculos(nuevosCalculos);
+    let resultados= realizarCalculosTotales(cheques,nuevosCalculos);
+    console.log("los valores a mostrar son: ",resultados);
+    /*
+    const nuevosResultados={
+    ...resultados,    
+    [importeTotal]: resultados.importeTotal, [tasaPromedio]: resultados.tasaPromedio, 
+    [profit]: resultados.profit, [totalApagar]: resultados.totalApagar 
+   };*/
+    setTotales(resultados);
+    
   }
  const controladorCheque=(e,index)=>{
    const {name,value}=e.target;
@@ -145,6 +160,8 @@ function FormCheques() {
       setErrores(nuevosErrores);
       setCheques(bkCheques);
       setCalculos(nuevosCalculos);
+      let resultados= realizarCalculosTotales(bkCheques,nuevosCalculos);
+      setTotales(resultados);
     }
   }
   const resetCheques=()=>{
@@ -167,7 +184,9 @@ function FormCheques() {
    }
    setCheques(bkCheques);
    setErrores(nuevosErrores);
-   setCalculos(nuevosCalculos);   
+   setCalculos(nuevosCalculos);  
+   let resultados= realizarCalculosTotales(bkCheques,nuevosCalculos);
+   setTotales(resultados);    
   }
 
   return (

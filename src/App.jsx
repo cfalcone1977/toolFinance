@@ -3,8 +3,11 @@ import './App.css';
 import FormCheques from './components/calculo/FormCheques';
 import FormTasas from './components/calculo/FormTasas';
 import SideCheques from './components/calculo/SideCheques';
-import {TasasProvider} from './context/TasasContext';
+import ResultadoCheques from './components/calculo/ResultadoCheques';
+import { TasasProvider } from './context/TasasContext';
 import { ResultadosProvider } from './context/SideContext';
+import { ChequesProvider } from './context/ChequesContext';
+import { TotalesContext, TotalesProvider } from './context/TotalesContext';
 
 function App() {
 
@@ -12,15 +15,19 @@ function App() {
     <>
       <Menu/>
       <TasasProvider>
-       <FormTasas/>
-       <section id='contenedorChequesCalculo'>
-         <ResultadosProvider>
-          <FormCheques/>
-          <SideCheques/>
-         </ResultadosProvider> 
-       </section>
+        <FormTasas/>
+        <ResultadosProvider>
+        <ChequesProvider>
+        <TotalesProvider>
+        <section id='contenedorChequesCalculo'>
+           <FormCheques/>
+           <SideCheques/>
+        </section>
+           <ResultadoCheques/>
+        </TotalesProvider>
+        </ChequesProvider>   
+       </ResultadosProvider>        
       </TasasProvider>
-
     </>
   )
 }
