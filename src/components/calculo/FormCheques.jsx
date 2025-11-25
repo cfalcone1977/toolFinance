@@ -35,7 +35,10 @@ function FormCheques() {
     const nuevosCalculos=[...calculos];
     for (let i = 0; i < cheques.length; i=i+1) {
       if (cheques[i].importe!=""){
-        const dias=Number(calcular_dias(cheques[i].fecha));
+        let dias=Number(calcular_dias(cheques[i].fecha));
+        if (dias<0){
+                 dias=0;
+                   };
         const tasaAaplicar=Number(calculo_tasa(dias,tasas));
         const descuentoCalculado=((Number(cheques[i].importe)/100)*tasaAaplicar);
         const liquidarCalculado=(Number(cheques[i].importe)-((Number(cheques[i].importe)/100)*tasaAaplicar));

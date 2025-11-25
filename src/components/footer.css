@@ -1,0 +1,46 @@
+#contenedorFooter{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(250, 247, 37);
+    border-top:  1px solid black; 
+}
+#footerIzquierda{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin: auto;
+}
+
+#footerCentral{ 
+  margin-top: 10px;
+  font-size: 16px;
+  font-style: italic;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 0em;
+}
+
+#footerDerecha{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: auto;
+
+
+}
+
+.iconos{
+    width: 30px;
+}
+
+.iconos:hover{
+    transform: scale(1.6);
+    transition: 0.2s;
+}

@@ -8,6 +8,7 @@ import { TasasProvider } from './context/TasasContext';
 import { ResultadosProvider } from './context/SideContext';
 import { ChequesProvider } from './context/ChequesContext';
 import { TotalesContext, TotalesProvider } from './context/TotalesContext';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
         </ChequesProvider>   
        </ResultadosProvider>        
       </TasasProvider>
+      <Footer/>
     </>
   )
 }

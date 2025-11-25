@@ -35,12 +35,7 @@ li a:hover{
    background:rgb(243, 50, 227);
    transition: 0.5s;
 }
-.navbar {
-  /* 1. Define el grosor de la línea (ej: 2 píxeles) */
-  /* 2. Define el estilo de la línea (ej: sólida) */
-  /* 3. Define el color de la línea (negro) */
-  border-bottom: 2px solid black; 
-}
+
 /*
 #donar{
   cursor: pointer;

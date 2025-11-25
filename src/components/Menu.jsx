@@ -5,9 +5,10 @@ function Menu() {
     <>
       <nav id='menuPrincipal'>
             <ul id='listadoMenu'>
-                <li><a href="">Calculo</a></li>
+                <li><a href="./pages/calculo.jsx">Calculo</a></li>
                 <li><a href="">Consulta</a></li>
                 <li><a href="">DENUNCIADOS</a></li>
+                <li><a href="">DONAR</a></li>
             </ul>
       </nav>
     </>
