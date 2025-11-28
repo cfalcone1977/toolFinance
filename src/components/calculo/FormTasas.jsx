@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { TasasContext } from '../../context/TasasContext';
+import { existenTasas, recuperarTasas } from '../utils/calculos';
 
 import "./formTasas.css";
 
@@ -14,6 +15,12 @@ function FormTasas() {
     tasa7dias:"",
     tasa15dias:"",
     tasa30dias:""});*/
+  /*
+  if (existenTasas()){
+                      const tasasGuardadas=recuperarTasas();
+                      setTasas(tasasGuardadas);
+                     }//********************************************************** */
+
   const [errorTasas,setErrorTasas]=useState("");
   const [salioPrimeraVez,setSalioPrimeraVez]=useState(false);
 
@@ -46,8 +53,14 @@ function FormTasas() {
         setErrorTasas("");
     }
   },[tasas.tasaXdia,tasas.tasaAldia,tasas.tasa7dias,tasas.tasa15dias,tasas.tasa30dias,salioPrimeraVez])
- 
 
+  useEffect (()=>{
+     if (existenTasas()){
+                      const tasasGuardadas=recuperarTasas();
+                      setTasas(tasasGuardadas);
+                     }
+  },[]);
+ 
   
   return (
     <form id='contenedorFormularioTasas'>

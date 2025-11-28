@@ -57,7 +57,7 @@ export function realizarCalculosTotales(cheques,chequesCalculados){
            totales.importeTotal=totales.importeTotal+Number(cheques[i].importe);
             } 
   }
-  
+
   for (let i = 0; i < chequesCalculados.length; i=i+1) {
     if (chequesCalculados[i].porcentaje!=""){
                  totales.tasaPromedio=totales.tasaPromedio+Number(chequesCalculados[i].porcentaje);
@@ -78,4 +78,44 @@ export function realizarCalculosTotales(cheques,chequesCalculados){
   console.log(totales);
   return totales;
 
+}
+
+export function guardarTasas(tasas){
+  localStorage.setItem("tasaXdia",JSON.stringify(tasas.tasaXdia));
+  localStorage.setItem("tasaAldia",JSON.stringify(tasas.tasaAldia));
+  localStorage.setItem("tasa7dias",JSON.stringify(tasas.tasa7dias));
+  localStorage.setItem("tasa15dias",JSON.stringify(tasas.tasa15dias));
+  localStorage.setItem("tasa30dias",JSON.stringify(tasas.tasa30dias));
+}
+  /*tasaXdia:"",
+    tasaAldia:"",
+    tasa7dias:"",
+    tasa15dias:"",
+    tasa30dias:""*/
+
+export function existenTasas(){
+  const tasaXdia= JSON.parse(localStorage.getItem("tasaXdia"));
+  const tasaAldia= JSON.parse(localStorage.getItem("tasaXdia"));
+  const tasa7dias= JSON.parse(localStorage.getItem("tasaXdia"));
+  const tasa15dias= JSON.parse(localStorage.getItem("tasaXdia"));
+  const tasa30dias= JSON.parse(localStorage.getItem("tasaXdia"));
+  const hayTasas=(tasaXdia!="") && (tasaAldia!="") && (tasa7dias!="") && (tasa15dias!="") && (tasa30dias!="");
+  return hayTasas;
+}    
+
+export function recuperarTasas(){
+  const tasaXdia= JSON.parse(localStorage.getItem("tasaXdia"));
+  const tasaAldia= JSON.parse(localStorage.getItem("tasaAldia"));
+  const tasa7dias= JSON.parse(localStorage.getItem("tasa7dias"));
+  const tasa15dias= JSON.parse(localStorage.getItem("tasa15dias"));
+  const tasa30dias= JSON.parse(localStorage.getItem("tasa30dias"));       
+  const tasas={tasaXdia:tasaXdia,tasaAldia:tasaAldia,tasa7dias:tasa7dias,tasa15dias:tasa15dias,tasa30dias:tasa30dias}      
+  return tasas;
+}
+
+export function guardarCheques(cheques){
+  for (let i = 0; i < cheques.length; i=i+1) {
+       localStorage.setItem(`importe${i}`,JSON.stringify(cheques[i].importe));
+       localStorage.setItem(`fecha${i}`,JSON.stringify(cheques[i].fecha));          
+  }
 }

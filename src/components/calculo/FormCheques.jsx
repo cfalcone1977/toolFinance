@@ -5,6 +5,7 @@ import { TasasContext } from '../../context/TasasContext';
 import { SideContext } from '../../context/SideContext';
 import { ChequesContext } from '../../context/ChequesContext';
 import { TotalesContext } from '../../context/TotalesContext';
+import { guardarTasas, existenTasas, guardarCheques } from '../utils/calculos';
 
 import {calcular_dias, calculo_tasa, realizarCalculosTotales} from "../utils/calculos"
 import "./formCheques.css"
@@ -63,6 +64,9 @@ function FormCheques() {
     [profit]: resultados.profit, [totalApagar]: resultados.totalApagar 
    };*/
     setTotales(resultados);
+    guardarTasas(tasas);
+    guardarCheques(cheques);
+    //lugar donde voy a utilizar localStorage
     
   }
  const controladorCheque=(e,index)=>{

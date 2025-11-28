@@ -1,0 +1,11 @@
+#contenedorDatos{
+    display: flex;
+    flex-direction: row;
+
+}
+
+#situacionBancosCheques{
+  display: flex;
+  flex-direction: column;
+
+}
