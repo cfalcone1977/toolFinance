@@ -14,7 +14,7 @@
 #textoEncabezado{
     display: flex;
     flex-wrap: wrap;
-    
+    font-weight: bold;
 }
 #encabezadoDatosCuit{
   height: 40px;
@@ -38,7 +38,15 @@
     height: 18px;
     margin-bottom: 5px;
 }
-
+#erroresCuit{
+    display: flex;
+    justify-content: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 11px;
+    color: red;
+    min-height: 15px;
+    opacity: 0.8;  
+}
 #botonConsultarCuit{
     display: flex;
     justify-content: center;

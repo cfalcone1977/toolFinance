@@ -59,9 +59,9 @@ function Datoscuit() {
         <input id='CUIT' className='inputCUIT' type="text" name='CUIT' value={cuit} placeholder='20261346959' onChange={(e)=>controlarCUIT(e)}/>
       </section>    
       <section id='contenedorErroresTasas'>
-         <div id='erroresTasa'>{errorConsulta}</div>
+         <div id='erroresCuit'>{errorConsulta}</div>
       </section>
-      <button type='submit' disabled={deshabilitarConsulta} id='botonConsultarCuit'>CONSULTA</button>
+      <button type='submit' disabled={deshabilitarConsulta} id='botonConsultarCuit'>Consulta</button>
     </form>
   )
 }
