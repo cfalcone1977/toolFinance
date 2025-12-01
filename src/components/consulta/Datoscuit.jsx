@@ -1,54 +1,131 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { useEffect, useState } from 'react';
+//import { ActivaConsultaContext } from '../../context/ActivaConsultaContext';
+import { DatosClienteContext } from '../../context/DatosClienteContext';
+
+
+import "./datosCuit.css"
 
 function Datoscuit() {
- const { cuit, setCuit } = useContext("");
+  //const {activaConsulta, setActivaConsulta}= useContext(ActivaConsultaContext);
+  const {cuitCliente, setCuitCliente} = useContext(DatosClienteContext);
+  const {errorConsulta, setErrorConsulta}=useContext(DatosClienteContext);
+  const {datosCargados, setDatosCargados}=useContext(DatosClienteContext);
+  const [cuit, setCuit] = useState("");
+  const [deshabilitarConsulta, setDeshabilitarConsulta]=useState(true);
 
 
-  const controlarCuit=(e)=>{
-    const {name,value}=e.target;
-    const validador=/^\d{0,3}(\.\d{0,2})?$/;
-    controlarSalidaTasas();
-
-    if (value !="" && !validador.test(value)) {
+  const controlarCUIT=(e)=>{
+    const {value}=e.target;
+    const validador=/^\d*$/;
+    if ((value!="" && !validador.test(value)) || (value.length>11))  {
     return;
     }
-  setTasas(prevState => ({
-    ...prevState,         // Copia todas las tasas existentes
-    [name]: value         // Sobreescribe solo la tasa cuyo nombre coincide con el input
-   }));
-
-
+    const BKcuit=value;
+    console.log(BKcuit);
+    setCuit(BKcuit);
+    setErrorConsulta("");
+    setDatosCargados(false);
+    if (BKcuit.length===11){
+      console.log("ENTRO");
+      setDeshabilitarConsulta(!(BKcuit.length===11));
+    } else setDeshabilitarConsulta(!(BKcuit.length===11));
   }
-  const controlarSalidaTasas=()=>{
-   setSalioPrimeraVez(true);
-   console.log("Salio del Formulario",salioPrimeraVez);
+
+  const manejoConsulta=(e)=>{
+    e.preventDefault();
+    //const activar=cuit;     /// a reemplazar por variable que cambia estado de cuitCliente
+    
+    //setActivaConsulta(activar); /// a reemplazar por cuitCliente
+    setCuitCliente(cuit); /// esto reemplaza las lineas 35 y 37 
+    //console.log(activaConsulta);
+    console.log(cuitCliente);
+  
   }
+
  
-  useEffect (()=>{
-    if (salioPrimeraVez && ((tasas.tasaXdia==="") || (tasas.tasaAldia==="") || (tasas.tasa7dias==="") || (tasas.tasa15dias==="") || (tasas.tasa30dias===""))){
-        setErrorTasas("Debe ingresar todas las tasas!!");
-    }else if ((tasas.tasaXdia!="") && (tasas.tasaAldia!="") && (tasas.tasa7dias!="") && (tasas.tasa15dias!="") && (tasas.tasa30dias!="")){
-        setErrorTasas("");
-    }
-  },[tasas.tasaXdia,tasas.tasaAldia,tasas.tasa7dias,tasas.tasa15dias,tasas.tasa30dias,salioPrimeraVez])
+
+ 
  
 
   
   return (
-    <form id='contenedorFormularioDatosCUIT'>
+    <form id='contenedorFormularioDatosCUIT' onSubmit={manejoConsulta}>
       <section id="encabezadoDatosCuit">
-        <pre>Datos a CHEQUEAR</pre>
+        <div id='textoEncabezado'>Datos a CHEQUEAR</div>
       </section>  
       <section id='contenedorCUIT'> 
-        <label htmlFor="CUIT">CUIT:</label>
-        <input id='CUIT' className='inputCUIT' type="text" value={tasas.tasaXdia} name='tasaXdia' placeholder=' %' onChange={(e)=>controlarTasa(e)} 
-        onBlur={()=>{controlarSalidaTasas()}}/>
+        <label htmlFor="CUIT">C.U.I.T.:</label>
+        <input id='CUIT' className='inputCUIT' type="text" name='CUIT' value={cuit} placeholder='20261346959' onChange={(e)=>controlarCUIT(e)}/>
       </section>    
       <section id='contenedorErroresTasas'>
-         <div id='erroresTasa'>{errorTasas}</div>
+         <div id='erroresTasa'>{errorConsulta}</div>
       </section>
+      <button type='submit' disabled={deshabilitarConsulta} id='botonConsultarCuit'>CONSULTA</button>
     </form>
   )
 }
 
 export default Datoscuit
+
+
+
+/*
+import React, { useContext } from 'react'
+import { useEffect, useState } from 'react';
+import { ActivaConsultaContext } from '../../context/ActivaConsultaContext';
+
+import "./datosCuit.css"
+
+function Datoscuit() {
+  const {activaConsulta, setActivaConsulta}= useContext(ActivaConsultaContext);
+  const [cuit, setCuit] = useState("");
+  const [error, setError]=useState("");
+  const [deshabilitarConsulta, setDeshabilitarConsulta]=useState(true);
+
+
+  const controlarCUIT=(e)=>{
+    const {value}=e.target;
+    const validador=/^\d*$/;
+    if ((value!="" && !validador.test(value)) || (value.length>11))  {
+    return;
+    }
+
+    const BKcuit=value;
+    console.log(BKcuit);
+    setCuit(BKcuit);
+    if (BKcuit.length===11){
+      console.log("ENTRO");
+      setDeshabilitarConsulta(!(BKcuit.length===11));
+    } else setDeshabilitarConsulta(!(BKcuit.length===11));
+  }
+
+  const manejoConsulta=(e)=>{
+    e.preventDefault();
+    const activar=cuit;
+    setActivaConsulta(activar);
+    console.log(activaConsulta);
+  
+  }
+
+
+  
+  return (
+    <form id='contenedorFormularioDatosCUIT' onSubmit={manejoConsulta}>
+      <section id="encabezadoDatosCuit">
+        <div id='textoEncabezado'>Datos a CHEQUEAR</div>
+      </section>  
+      <section id='contenedorCUIT'> 
+        <label htmlFor="CUIT">C.U.I.T.:</label>
+        <input id='CUIT' className='inputCUIT' type="text" name='CUIT' value={cuit} placeholder='20261346959' onChange={(e)=>controlarCUIT(e)}/>
+      </section>    
+      <section id='contenedorErroresTasas'>
+         <div id='erroresTasa'>{error}</div>
+      </section>
+      <button type='submit' disabled={deshabilitarConsulta} id='botonConsultarCuit'>CONSULTA</button>
+    </form>
+  )
+}
+
+export default Datoscuit
+*/

@@ -5,7 +5,7 @@ import { TasasContext } from '../../context/TasasContext';
 import { SideContext } from '../../context/SideContext';
 import { ChequesContext } from '../../context/ChequesContext';
 import { TotalesContext } from '../../context/TotalesContext';
-import { guardarTasas, existenTasas, guardarCheques } from '../utils/calculos';
+import { guardarTasas, existenTasas, guardarCheques, existenCheques, recuperarCheques, guardarSide, recuperarSide, guardarTotales, recuperarTotales } from '../utils/calculos';
 
 import {calcular_dias, calculo_tasa, realizarCalculosTotales} from "../utils/calculos"
 import "./formCheques.css"
@@ -66,6 +66,8 @@ function FormCheques() {
     setTotales(resultados);
     guardarTasas(tasas);
     guardarCheques(cheques);
+    guardarSide(nuevosCalculos);
+    guardarTotales(resultados);
     //lugar donde voy a utilizar localStorage
     
   }
@@ -114,6 +116,18 @@ function FormCheques() {
      salioInput=false;
      */
   }
+
+    useEffect(()=>{
+     console.log(existenCheques());
+     const chequesExistentes=recuperarCheques();
+     console.log("EXISTEN CHEQUES:",chequesExistentes);
+     const calculosExistentes=recuperarSide();
+     const resultadosExistentes=recuperarTotales();
+     setCheques(chequesExistentes);   
+     setCalculos(calculosExistentes);
+     setTotales(resultadosExistentes);
+    },[]);
+
 
 
     useEffect(()=>{
@@ -169,6 +183,10 @@ function FormCheques() {
       setCalculos(nuevosCalculos);
       let resultados= realizarCalculosTotales(bkCheques,nuevosCalculos);
       setTotales(resultados);
+      guardarCheques(bkCheques);
+      guardarSide(nuevosCalculos);
+      guardarTotales(resultados);
+
     }
   }
   const resetCheques=()=>{
@@ -194,6 +212,10 @@ function FormCheques() {
    setCalculos(nuevosCalculos);  
    let resultados= realizarCalculosTotales(bkCheques,nuevosCalculos);
    setTotales(resultados);    
+   guardarCheques(bkCheques);
+   guardarSide(nuevosCalculos);
+   guardarTotales(resultados);
+
   }
 
   return (

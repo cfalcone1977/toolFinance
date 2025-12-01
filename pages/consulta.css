@@ -1,11 +1,15 @@
 #contenedorDatos{
     display: flex;
     flex-direction: row;
+    width: 100%;
+    justify-content: center;
 
 }
 
 #situacionBancosCheques{
   display: flex;
   flex-direction: column;
+  width: 100%;
+  text-align: center;
 
 }
