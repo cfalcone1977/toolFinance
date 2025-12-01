@@ -11,6 +11,10 @@ function Datoscuit() {
   const {cuitCliente, setCuitCliente} = useContext(DatosClienteContext);
   const {errorConsulta, setErrorConsulta}=useContext(DatosClienteContext);
   const {datosCargados, setDatosCargados}=useContext(DatosClienteContext);
+  const {denominacionCliente, setDenominacionCliente}=useContext(DatosClienteContext);
+  const {periodosCliente, setPeriodosCliente}=useContext(DatosClienteContext);
+  const {entidades, setEntidades}=useContext(DatosClienteContext);
+  const {listaChequesRechazados, setListaChequesRechazados}=useContext(DatosClienteContext);
   const [cuit, setCuit] = useState("");
   const [deshabilitarConsulta, setDeshabilitarConsulta]=useState(true);
 
@@ -40,10 +44,16 @@ function Datoscuit() {
     setCuitCliente(cuit); /// esto reemplaza las lineas 35 y 37 
     //console.log(activaConsulta);
     console.log(cuitCliente);
-  
   }
 
- 
+ const datosLimpiar=()=>{
+   setCuit("");
+   setDenominacionCliente("");
+   setPeriodosCliente([]);
+   setEntidades([]);
+   setListaChequesRechazados([]);
+   setDeshabilitarConsulta(true);
+ }
 
  
  
@@ -56,7 +66,7 @@ function Datoscuit() {
       </section>  
       <section id='contenedorCUIT'> 
         <label htmlFor="CUIT">C.U.I.T.:</label>
-        <input id='CUIT' className='inputCUIT' type="text" name='CUIT' value={cuit} placeholder='20261346959' onChange={(e)=>controlarCUIT(e)}/>
+        <input id='CUIT' className='inputCUIT' type="text" name='CUIT' value={cuit} placeholder='20261346959' onClick={()=>datosLimpiar()} onChange={(e)=>controlarCUIT(e)}/>
       </section>    
       <section id='contenedorErroresTasas'>
          <div id='erroresCuit'>{errorConsulta}</div>

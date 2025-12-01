@@ -31,9 +31,9 @@
 }
 
 #CUIT{
-    text-align: center;
+    font-size: 16px;
     margin: 5px;
-    width: 90px;
+    width: 100px;
     border-radius: 5px;
     height: 18px;
     margin-bottom: 5px;

@@ -44,7 +44,7 @@ function Situacionbancos() {
       <article id='datosBancos'>
           <div>
                 <div>{entidades.map((e, index) => (
-                 <p key={index}>{e.entidad} {e.monto*1000} {e.situacion}</p>
+                 <p key={index}>{e.entidad} {`$ ${e.monto*1000}`} {e.situacion}</p>
                 ))}
                 </div>
           </div>        

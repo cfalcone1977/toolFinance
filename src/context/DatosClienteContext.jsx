@@ -7,6 +7,7 @@ export const DatosClienteProvider = ({ children }) => {
     const [denominacionCliente, setDenominacionCliente]=useState("");
     const [periodosCliente, setPeriodosCliente]=useState([]);
     const [entidades, setEntidades]=useState([]);
+    const [listaChequesRechazados,setListaChequesRechazados]=useState([]);
     const [datosCargados,setDatosCargados]=useState(false);
     const [errorConsulta, setErrorConsulta]=useState("");
 
@@ -15,6 +16,7 @@ export const DatosClienteProvider = ({ children }) => {
         denominacionCliente, setDenominacionCliente,
         periodosCliente, setPeriodosCliente,
         entidades, setEntidades,
+        listaChequesRechazados, setListaChequesRechazados,
         datosCargados, setDatosCargados,
         errorConsulta, setErrorConsulta
     };
