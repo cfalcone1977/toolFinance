@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 const BASE_URL = "https://api.bcra.gob.ar/centraldedeudores/v1.0/Deudas/";
 
 export default function traerInfoCuit(endpoint) {
-    const [data, setData] = useState(null);   //useState([]);
+    console.log(endpoint);
+    const [data, setData] = useState(null);   //useState([]); //null*****
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
     const getData = async (endpoint) => {
         try {
             setLoading(true);

@@ -184,3 +184,33 @@ export function existenCheques(){
     totales.totalApagar=JSON.parse(localStorage.getItem(`totalApagar`))
     return totales;
  }
+
+ export function formatoMoneda(amount){
+    // ... lógica de Intl.NumberFormat para 'es-AR'
+    return new Intl.NumberFormat('es-AR', {
+        style: 'currency',
+        currency: 'ARS',
+        minimumFractionDigits: 2, 
+    }).format(amount);
+};
+
+export function formatearFecha(dateString){
+    if (!dateString) {
+        return 'N/A';
+    }  
+    try {
+        const date = new Date(dateString);
+        if (isNaN(date.getTime())) {
+            return dateString; 
+        }
+        return new Intl.DateTimeFormat('es-AR', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+        }).format(date);
+
+    } catch (e) {
+        console.error("Error al formatear la fecha:", e);
+        return dateString; 
+    }
+};

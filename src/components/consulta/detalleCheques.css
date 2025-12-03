@@ -11,3 +11,52 @@
   font-size: 20px;
   font-weight: bold;
 }
+
+#contenedorListaRechazados{
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    justify-content:center;
+}
+#contenedorEncabezados{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+
+.contNumeroCheque{
+    width: 90px;
+    text-align: center;
+}
+.contMonto{
+    width: 110px;
+    text-align: center;
+}
+.contFechaRechazo{
+    width: 85px;
+    text-align: center;
+}
+.contFechaPago{
+    width: 95px;
+    text-align: center;
+}
+#contNumeroCheque{
+    width: 90px;
+    text-align: end;
+}
+#contMonto{
+    width: 110px;
+    text-align: end;
+}
+#contFechaRechazo{
+    width: 85px;
+    text-align: end;
+}
+#contFechaPago{
+    width: 95px;
+    text-align: end;
+}

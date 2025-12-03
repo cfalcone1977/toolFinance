@@ -15,6 +15,8 @@ function Datoscuit() {
   const {periodosCliente, setPeriodosCliente}=useContext(DatosClienteContext);
   const {entidades, setEntidades}=useContext(DatosClienteContext);
   const {listaChequesRechazados, setListaChequesRechazados}=useContext(DatosClienteContext);
+  const {situacionBancos,setSituacionBancos}=useContext(DatosClienteContext);
+  const {situacionCheques, setSituacionCheques}=useContext(DatosClienteContext);
   const [cuit, setCuit] = useState("");
   const [deshabilitarConsulta, setDeshabilitarConsulta]=useState(true);
 
@@ -42,6 +44,7 @@ function Datoscuit() {
     
     //setActivaConsulta(activar); /// a reemplazar por cuitCliente
     setCuitCliente(cuit); /// esto reemplaza las lineas 35 y 37 
+    setDeshabilitarConsulta(true);
     //console.log(activaConsulta);
     console.log(cuitCliente);
   }
@@ -51,8 +54,11 @@ function Datoscuit() {
    setDenominacionCliente("");
    setPeriodosCliente([]);
    setEntidades([]);
+   setSituacionBancos(0);
+   setSituacionCheques(0);
    setListaChequesRechazados([]);
    setDeshabilitarConsulta(true);
+   setErrorConsulta("");
  }
 
  
