@@ -1,4 +1,3 @@
-import React from 'react'
 import { useContext, useEffect, useState } from 'react';
 import { DatosClienteContext } from '../../context/DatosClienteContext';
 import traerInfoRechazos from './hooks/infoRechazos';
@@ -12,47 +11,43 @@ function Detallecheques() {
   const {denominacionCliente, setDenominacionCliente}=useContext(DatosClienteContext);
   const {loadingRechazos, errorRechazos, dataRechazos} = traerInfoRechazos(cuitCliente);
   const {situacionCheques, setSituacionCheques}=useContext(DatosClienteContext);
-  console.log(loadingRechazos);
-  console.log(errorRechazos);
+  const {periodosCliente, setPeriodosCliente}=useContext(DatosClienteContext);
 
   
 
   useEffect(() => {
+    if (cuitCliente === "" || denominacionCliente === "CUIT Inexistente") {
+        setSituacionCheques(0);
+        setListaChequesRechazados([]); 
+        return; 
+    }
      if ((!loadingRechazos && dataRechazos && dataRechazos.results)){
-         console.log("ya se cargo DATA Rechazos");
-         console.log(dataRechazos.results.causales);
          let entidades=[];
          let chequesRechazados=[];
-         console.log("estas son las entidades: ",entidades);
          for (let i = 0; i < dataRechazos.results.causales[0].entidades.length; i=i+1) {
              entidades.push(dataRechazos.results.causales[0].entidades[i]);
              for (let i2 = 0; i2 < dataRechazos.results.causales[0].entidades[i].detalle.length; i2=i2+1)
                {
-                    console.log(dataRechazos.results.causales[0].entidades[i].detalle[i2].nroCheque);
-                    console.log(dataRechazos.results.causales[0].entidades[i].detalle[i2].fechaRechazo);
-                    console.log(dataRechazos.results.causales[0].entidades[i].detalle[i2].monto);
-                    console.log(dataRechazos.results.causales[0].entidades[i].detalle[i2].fechaPago);
                    chequesRechazados.push(dataRechazos.results.causales[0].entidades[i].detalle[i2]);
              }
          }       
          if (chequesRechazados.length>0){
                                 setSituacionCheques(3);
+                          
                                    } 
-         console.log(dataRechazos.results.causales[0]);
-         console.log(dataRechazos.results.causales[1]);   
-         console.log(entidades);
+           
          setListaChequesRechazados(chequesRechazados);
-         console.log(chequesRechazados);
      }
 
-    if (dataRechazos===null && denominacionCliente!="CUIT Inexistente"){
+
+    if (dataRechazos===null && (denominacionCliente!="CUIT Inexistente" && denominacionCliente!="")){
                          setSituacionCheques(1);
-                            }
+                            }                     
 
     if (cuitCliente==="" || denominacionCliente==="CUIT Inexistente"){
                         setSituacionCheques(0);
                          }
-    }, [loadingRechazos,errorRechazos]);
+    }, [loadingRechazos,errorRechazos,dataRechazos,cuitCliente,denominacionCliente]);///se agrego situacionCheques
 
 const colorSituacionCheques=(situacion)=>{
     if (situacion === 0) {
@@ -65,20 +60,10 @@ const colorSituacionCheques=(situacion)=>{
     } else if (situacion >= 3 && situacion <= 5) {
       return { backgroundColor: 'red' };
     }
-    return ''; // Clase por defecto si el valor no coincide
+    return ''; 
 }
 
 
-/*
-const formatCurrency = (amount) => {
-    // ... lógica de Intl.NumberFormat para 'es-AR'
-    return new Intl.NumberFormat('es-AR', {
-        style: 'currency',
-        currency: 'ARS',
-        minimumFractionDigits: 2, 
-    }).format(amount);
-};
-*/
   return (
     <section id='contenedorDatosRechazado' style={colorSituacionCheques(situacionCheques)}>
       <div id='encabezadoDatosRechazado'>{situacionCheques===1?"NO EXISTEN Cheques RECHAZADOS":"Cheques Rechazados"}</div>
@@ -108,5 +93,3 @@ const formatCurrency = (amount) => {
 }
 
 export default Detallecheques
-//<p key={index}>{c.nroCheque} {formatoMoneda(c.monto)} {c.fechaRechazo} {c.fechaPago}</p> 
-//{`$ ${c.monto*1000}`}

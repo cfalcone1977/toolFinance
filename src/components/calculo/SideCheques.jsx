@@ -1,4 +1,3 @@
-import React from 'react'
 import "./sideCheques.css";
 import { useContext } from 'react';
 import { SideContext } from '../../context/SideContext';
@@ -34,16 +33,3 @@ function SideCheques() {
 
 export default SideCheques
 
-/*
-
-export default function ProductList({ products, setCart }) {
-    return (
-        <Row as={"section"}>
-            {products?.map((p) => <ProductItem key={p.id} product={p} setCart={setCart} />)}
-        </Row>
-    );
-}
-
-<div id='contDescuento'>$ {c.descuento.toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(12)}</div>
-
-*/

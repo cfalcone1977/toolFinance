@@ -13,7 +13,6 @@ export default function traerInfoCuit(endpoint) {
             setError(null);
             const res = await fetch(BASE_URL + endpoint);
             if (!res.ok) {
-                   console.log(res);
                    if (res.statusText==="Not Found") throw new Error("CUIT Inexistente");
                    throw new Error("Error de Conexion, intente mas tarde");
                 }
@@ -22,7 +21,7 @@ export default function traerInfoCuit(endpoint) {
             setData(parsedData);
         } catch (error) {
             setError(error);
-            setData(null); //Limpiart Datos si hay error            
+            setData(null); //Limpiar Datos si hay error            
         } finally {
             setLoading(false);
         }

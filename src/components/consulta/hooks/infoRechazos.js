@@ -14,7 +14,6 @@ export default function traerInfoRechazos(endpoint) {
             setErrorRechazos(null);
             const res = await fetch(BASE_URL + endpoint);
             if (!res.ok) {
-                   console.log(res);
                    if (res.statusText==="Not Found") throw new Error("No se encontró datos para el C.U.I.T. ingresado.");
                    throw new Error("Error de Conexion, intente mas tarde");
                 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import Menu from '../src/components/Menu';
 import { TasasProvider } from '../src/context/TasasContext';
 import FormTasas from '../src/components/calculo/FormTasas';

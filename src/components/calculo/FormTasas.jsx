@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { TasasContext } from '../../context/TasasContext';
 import { existenTasas, recuperarTasas } from '../utils/calculos';
@@ -10,16 +10,6 @@ import "./formTasas.css";
 function FormTasas() {
 
   const { tasas, setTasas } = useContext(TasasContext);
-  /*  const [tasas, setTasas]=useState({tasaXdia:"",
-    tasaAldia:"",
-    tasa7dias:"",
-    tasa15dias:"",
-    tasa30dias:""});*/
-  /*
-  if (existenTasas()){
-                      const tasasGuardadas=recuperarTasas();
-                      setTasas(tasasGuardadas);
-                     }//********************************************************** */
 
   const [errorTasas,setErrorTasas]=useState("");
   const [salioPrimeraVez,setSalioPrimeraVez]=useState(false);
@@ -33,8 +23,8 @@ function FormTasas() {
     return;
     }
   setTasas(prevState => ({
-    ...prevState,         // Copia todas las tasas existentes
-    [name]: value         // Sobreescribe solo la tasa cuyo nombre coincide con el input
+    ...prevState,         
+    [name]: value         
    }));
 
     console.log(value);
@@ -43,7 +33,6 @@ function FormTasas() {
   }
   const controlarSalidaTasas=()=>{
    setSalioPrimeraVez(true);
-   console.log("Salio del Formulario",salioPrimeraVez);
   }
  
   useEffect (()=>{

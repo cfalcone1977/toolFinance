@@ -1,8 +1,6 @@
 
-  
-  
   export function calcular_dias(fecha){
-    const fecha_actual=new Date();            // calcular cantidad de dias a la fecha de cobro. 
+    const fecha_actual=new Date();            
     const fecha_cheque=new Date(fecha);
     const dias=(Math.round((fecha_cheque - fecha_actual)/86400000))+1;
     console.log(dias);
@@ -75,7 +73,6 @@ export function realizarCalculosTotales(cheques,chequesCalculados){
                 }
   } 
   totales.totalApagar=totales.importeTotal-totales.profit;
-  console.log(totales);
   return totales;
 
 }
@@ -87,11 +84,6 @@ export function guardarTasas(tasas){
   localStorage.setItem("tasa15dias",JSON.stringify(tasas.tasa15dias));
   localStorage.setItem("tasa30dias",JSON.stringify(tasas.tasa30dias));
 }
-  /*tasaXdia:"",
-    tasaAldia:"",
-    tasa7dias:"",
-    tasa15dias:"",
-    tasa30dias:""*/
 
 export function existenTasas(){
   const tasaXdia= JSON.parse(localStorage.getItem("tasaXdia"));
@@ -174,7 +166,7 @@ export function existenCheques(){
     localStorage.setItem(`tasaPromedio`,JSON.stringify(totales.tasaPromedio));
     localStorage.setItem(`profit`,JSON.stringify(totales.profit));
     localStorage.setItem(`totalApagar`,JSON.stringify(totales.totalApagar));
- }   /*{importeTotal:"",tasaPromedio:"",profit:"",totalApagar:""};*/
+ }  
 
  export function recuperarTotales(){
     const totales={};   
@@ -186,7 +178,6 @@ export function existenCheques(){
  }
 
  export function formatoMoneda(amount){
-    // ... lógica de Intl.NumberFormat para 'es-AR'
     return new Intl.NumberFormat('es-AR', {
         style: 'currency',
         currency: 'ARS',

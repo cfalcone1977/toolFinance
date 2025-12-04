@@ -1,11 +1,9 @@
-import React from 'react';
 import Menu from '../src/components/Menu';
 import Footer from '../src/components/Footer';
 import Datoscuit from '../src/components/consulta/Datoscuit';
 import Datoscliente from '../src/components/consulta/Datoscliente';
 import Situacionbancos from '../src/components/consulta/Situacionbancos';
 import Detallecheques from '../src/components/consulta/Detallecheques';
-//import { ActivaConsultaProvider } from '../src/context/ActivaConsultaContext';
 import { DatosClienteProvider } from '../src/context/DatosClienteContext';
 
 import "./consulta.css";
@@ -32,43 +30,3 @@ function Consulta() {
 }
 
 export default Consulta
-
-
-/*
-import React from 'react';
-import Menu from '../src/components/Menu';
-import Footer from '../src/components/Footer';
-import Datoscuit from '../src/components/consulta/Datoscuit';
-import Datoscliente from '../src/components/consulta/Datoscliente';
-import Situacionbancos from '../src/components/consulta/Situacionbancos';
-import Detallecheques from '../src/components/consulta/Detallecheques';
-import { ActivaConsultaProvider } from '../src/context/ActivaConsultaContext';
-import { DatosClienteProvider } from '../src/context/DatosClienteContext';
-
-import "./consulta.css";
-
-
-
-function Consulta() {
-  return (
-    <>
-      <Menu/>
-      <DatosClienteProvider>
-      <ActivaConsultaProvider>
-      <section id='contenedorDatos'>
-        <Datoscuit />
-        <Datoscliente />
-      </section>
-      </ActivaConsultaProvider>
-      <section id='situacionBancosCheques'>
-        <Situacionbancos/>
-        <Detallecheques/>
-      </section>
-      </DatosClienteProvider>
-      <Footer/>
-    </>  
-  )
-}
-
-export default Consulta
-*/

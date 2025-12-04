@@ -1,7 +1,4 @@
-import React from 'react'
 import { useState, useContext } from 'react';
-import { SideContext } from '../../context/SideContext';
-import { ChequesContext } from '../../context/ChequesContext';
 import { TotalesContext } from '../../context/TotalesContext';
 import "./resultadoCheques.css"
 
@@ -24,14 +21,3 @@ function ResultadoCheques() {
 
 export default ResultadoCheques
 
-/*
-  const {cheques, setCheques} = useContext(ChequesContext);
-  let totalCheques=0;
-  for (let i = 0; i < cheques.length; i=i+1) {
-      if (cheques[i].importe!=""){
-                 totalCheques=totalCheques + Number(cheques[i].importe);
-               }
-  }
-  console.log("TOTAL CHEQUES",totalCheques);
-
-*/
