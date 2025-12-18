@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useState } from 'react';
+import { useState } from 'react';     
 import { useContext } from 'react';
 import { TasasContext } from '../../context/TasasContext';
 import { SideContext } from '../../context/SideContext';
@@ -180,7 +180,7 @@ function FormCheques() {
       
            placeholder='0.00'/>
            <input className='inputFecha' type="date" name='fecha' value={chq.fecha} onChange={(e)=>controladorCheque(e,index)}/>
-           <img id='eliminarCheque' src="./imagenes/trash.svg" alt="" onClick={(e)=>{borrarCheque(e,index)}} />
+           <img id='eliminarCheque' src="../public/trash.svg" alt="" onClick={(e)=>{borrarCheque(e,index)}} />
            </section>
            <section id='contenedorErrores'>
            <div id='errores'>{errores[index]}</div>

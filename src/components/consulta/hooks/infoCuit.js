@@ -4,13 +4,13 @@ const BASE_URL = "https://api.bcra.gob.ar/centraldedeudores/v1.0/Deudas/";
 
 export default function traerInfoCuit(endpoint) {
     console.log(endpoint);
-    const [data, setData] = useState(null);   //useState([]); //null*****
+    const [data, setData] = useState([]);   //useState([]); //null*****
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(null); //null
     const getData = async (endpoint) => {
         try {
             setLoading(true);
-            setError(null);
+            setError(null);  //null
             const res = await fetch(BASE_URL + endpoint);
             if (!res.ok) {
                    if (res.statusText==="Not Found") throw new Error("CUIT Inexistente");
@@ -21,15 +21,15 @@ export default function traerInfoCuit(endpoint) {
             setData(parsedData);
         } catch (error) {
             setError(error);
-            setData(null); //Limpiar Datos si hay error            
+            setData([]); //Limpiar Datos si hay error **null**         
         } finally {
             setLoading(false);
         }
     };
     useEffect(() => {
         if (!endpoint || endpoint.length < 11) {
-            setData(null);
-            setError(null);
+            setData([]);   //null
+            setError(null);   //null
             setLoading(false); // No está cargando porque no tiene que hacer nada
             return; // Detiene el useEffect aquí.
         }

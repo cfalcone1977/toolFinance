@@ -3,15 +3,15 @@ import { useEffect, useState } from 'react';
 const BASE_URL = "https://api.bcra.gob.ar/centraldedeudores/v1.0/Deudas/ChequesRechazados/";
 
 export default function traerInfoRechazos(endpoint) {
-    const [dataRechazos, setDataRechazos] = useState(null);   //useState([]);
+    const [dataRechazos, setDataRechazos] = useState([]);   //useState([]) **null;
     const [loadingRechazos, setLoadingRechazos] = useState(true);
-    const [errorRechazos, setErrorRechazos] = useState(null);
+    const [errorRechazos, setErrorRechazos] = useState(""); //null
     
 
     const getData = async (endpoint) => {
         try {
             setLoadingRechazos(true);
-            setErrorRechazos(null);
+            setErrorRechazos(""); //null
             const res = await fetch(BASE_URL + endpoint);
             if (!res.ok) {
                    if (res.statusText==="Not Found") throw new Error("No se encontró datos para el C.U.I.T. ingresado.");
@@ -22,15 +22,15 @@ export default function traerInfoRechazos(endpoint) {
             setDataRechazos(parsedData);
         } catch (error) {
             setErrorRechazos(error);
-            setDataRechazos(null); //Limpiart Datos si hay error            
+            setDataRechazos([]); //Limpiart Datos si hay error **null           
         } finally {
             setLoadingRechazos(false);
         }
     };
     useEffect(() => {
         if (!endpoint || endpoint.length < 11) {
-            setDataRechazos(null);
-            setErrorRechazos(null);
+            setDataRechazos([]); //null
+            setErrorRechazos("");  //null
             setLoadingRechazos(false); // No está cargando porque no tiene que hacer nada
             return; // Detiene el useEffect aquí.
         }

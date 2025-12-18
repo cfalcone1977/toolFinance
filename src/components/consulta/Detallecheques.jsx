@@ -39,8 +39,9 @@ function Detallecheques() {
          setListaChequesRechazados(chequesRechazados);
      }
 
-
-    if (dataRechazos===null && (denominacionCliente!="CUIT Inexistente" && denominacionCliente!="")){
+    console.log(dataRechazos);
+    console.log(denominacionCliente);   
+    if (dataRechazos.length===0 && (denominacionCliente!="CUIT Inexistente" && denominacionCliente!="")){  //null
                          setSituacionCheques(1);
                             }                     
 
@@ -66,7 +67,7 @@ const colorSituacionCheques=(situacion)=>{
 
   return (
     <section id='contenedorDatosRechazado' style={colorSituacionCheques(situacionCheques)}>
-      <div id='encabezadoDatosRechazado'>{situacionCheques===1?"NO EXISTEN Cheques RECHAZADOS":"Cheques Rechazados"}</div>
+      <div id='encabezadoDatosRechazado'>{console.log(situacionCheques)}{situacionCheques===1?"NO EXISTEN Cheques RECHAZADOS":"Cheques Rechazados"}</div>
       <article id='datosRechazados'>
           <div id='contenedorEncabezados'>
               <div className='contNumeroCheque'>{(listaChequesRechazados.length>0)?"Nro Cheque":""}</div>
