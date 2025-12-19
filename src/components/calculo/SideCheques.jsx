@@ -18,10 +18,10 @@ function SideCheques() {
             {calculos.map((c,index)=>{
                  return (
                     <div id='contenedorCalculosCheques' key={index} >
-                       <div id='contDiasCobro'>{c.diasCobro==="" || null? "":c.diasCobro.toLocaleString().padStart(3)}</div>
-                       <div id='contPorcentaje'>{c.porcentaje==="" || null? "":`${c.porcentaje.toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(6)}%`}</div>
-                       <div id='contDescuento'>{c.descuento==="" || null? "": `$ ${c.descuento.toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(12)}`}</div>
-                       <div id='contLiquidar'>{c.liquidar==="" || null? "":`$ ${c.liquidar.toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(12)}`}</div>
+                       <div id='contDiasCobro'>{c.diasCobro==="" || c.diasCobro===null || c.diasCobro===undefined ? "":c.diasCobro.toLocaleString().padStart(3)}</div>
+                       <div id='contPorcentaje'>{c.porcentaje==="" || c.porcentaje===null || c.porcentaje===undefined? "":`${c.porcentaje.toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(6)}%`}</div>
+                       <div id='contDescuento'>{c.descuento==="" || c.descuento===null ||c.descuento===undefined? "": `$ ${c.descuento.toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(12)}`}</div>
+                       <div id='contLiquidar'>{c.liquidar==="" || c.liquidar===null || c.liquidar===undefined? "":`$ ${c.liquidar.toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(12)}`}</div>
                     </div>
                     )
             })}
