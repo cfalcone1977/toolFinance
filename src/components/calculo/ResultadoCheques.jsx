@@ -4,17 +4,21 @@ import "./resultadoCheques.css"
 
 function ResultadoCheques() {
   const {totales, setTotales} = useContext(TotalesContext);
-
+  const controlarFormato=(valor)=>{
+      if (valor!=null || valor!=undefined){
+                                     return valor;
+                                          } else return "";
+  }
   return (
     <section id='contenedorResultados'> 
         <div id='importeTotal'>IMPORTE TOTAL EN CHEQUES:</div>
-        <p>$ {totales.importeTotal.toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(6)}</p>
+        <p>$ {controlarFormato(totales.importeTotal).toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(6)}</p>
         <div id='tasaPromedio'>TASA PROMEDIO:</div>        
-        <p>{totales.tasaPromedio.toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(3)}%</p>
+        <p>{controlarFormato(totales.tasaPromedio).toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(3)}%</p>
         <div id='profit'>DIFERENCIA (Profit):</div>
-        <p>$ {totales.profit.toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(6)}</p>
+        <p>$ {controlarFormato(totales.profit).toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(6)}</p>
         <div id='totalApagar'>DINERO TOTAL A PAGAR:</div>
-        <p>$ {totales.totalApagar.toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(6)}</p>
+        <p>$ {controlarFormato(totales.totalApagar).toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(6)}</p>
     </section>
   )
 }
