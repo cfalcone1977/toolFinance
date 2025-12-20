@@ -16,8 +16,8 @@ function Footer() {
           <pre>© Noviembre 2025.</pre>        
        </section>   
        <section id='footerDerecha'>
-          <img src="../public/linkedin.svg" alt="linkedin" className='iconos'/>                
-          <img src="../public/whatsapp.svg" alt="whatsapp" className='iconos'/>        
+          <img src="/linkedin.svg" alt="linkedin" className='iconos'/>                
+          <img src="/whatsapp.svg" alt="whatsapp" className='iconos'/>        
        </section>                
      </article>
     </>
