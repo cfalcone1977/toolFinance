@@ -5,6 +5,12 @@ import { SideContext } from '../../context/SideContext';
 function SideCheques() {
   const { calculos, setCalculos } = useContext(SideContext);
   console.log("Calculos", calculos);
+
+  const controlarFormato=(valor)=>{
+      if (valor!=null || valor!=undefined){
+                                     return valor;
+                                          } else return "";
+  }
   return (
     <>
      <div id='sideCheques'>
@@ -18,10 +24,10 @@ function SideCheques() {
             {calculos.map((c,index)=>{
                  return (
                     <div id='contenedorCalculosCheques' key={index} >
-                       <div id='contDiasCobro'>{c.diasCobro==="" || c.diasCobro===null || c.diasCobro===undefined ? "":c.diasCobro.toLocaleString().padStart(3)}</div>
-                       <div id='contPorcentaje'>{c.porcentaje==="" || c.porcentaje===null || c.porcentaje===undefined? "":`${c.porcentaje.toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(6)}%`}</div>
-                       <div id='contDescuento'>{c.descuento==="" || c.descuento===null ||c.descuento===undefined? "": `$ ${c.descuento.toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(12)}`}</div>
-                       <div id='contLiquidar'>{c.liquidar==="" || c.liquidar===null || c.liquidar===undefined? "":`$ ${c.liquidar.toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(12)}`}</div>
+                       <div id='contDiasCobro'>{controlarFormato(c.diasCobro).toLocaleString().padStart(3)}</div>
+                       <div id='contPorcentaje'>{controlarFormato(c.porcentaje)===""? "":`${c.porcentaje.toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(6)}%`}</div>
+                       <div id='contDescuento'>{controlarFormato(c.descuento)===""? "": `$ ${c.descuento.toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(12)}`}</div>
+                       <div id='contLiquidar'>{controlarFormato(c.liquidar)===""? "":`$ ${c.liquidar.toLocaleString('es-Es',{minimumFractionDigits: 2, maximumFractionDigits: 2}).padStart(12)}`}</div>
                     </div>
                     )
             })}
